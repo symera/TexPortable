@@ -37,6 +37,7 @@ else
 Run, "%editor%" %template%,,Max,pideditor
 WinWaitActive, Document ahk_pid %pideditor%
   Send, {LWin Down}{Left}{LWin Up}
+Sleep, 100
 Run, "%viewer%",,Max,pidviewer
 WinWaitActive, ahk_pid %pidviewer%
   Send, {LWin Down}{Right}{LWin Up}
