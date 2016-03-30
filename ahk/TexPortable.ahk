@@ -8,8 +8,10 @@ SetWorkingDir %A_ScriptDir%                      ; ensures a consistent starting
 template = "%A_WorkingDir%\Documents\Template\Template.tex"
 editor = %A_WorkingDir%\Texmaker\texmaker.exe
 editorName = Texmaker
+editorProcess := RegExReplace(editor, "^.*\\(.+$)", "$1")
 viewer = %A_WorkingDir%\SumatraPDF\SumatraPDF.exe
 viewerName = SumatraPDF
+viewerProcess := RegExReplace(viewer, "^.*\\(.+$)", "$1")
 texlib = %A_WorkingDir%\MiKTeX\miktex\bin\miktex-taskbar-icon.exe
 texlibName = MiKTeX
 texlibProcess = miktex-taskbar-icon.tmp
@@ -30,22 +32,13 @@ else
   Run, "%texlib%",,,pidtexlib
 }
 
-if (A_PtrSize = 8)
-  bitScript = 64
-else
-  bitScript = 32
-if (A_Is64bitOS)
-  bitOS = 64
-else
-  bitOS = 32
-
 RunWait, %A_WorkingDir%\FontsPortable\FontsPortable.exe -add
 Run, "%editor%" %template%,,Max,pideditor
-WinWaitActive, ahk_pid %pideditor%
+WinWaitActive, ahk_exe %editorProcess% ahk_pid %pideditor%
   Send, {LWin Down}{Left}{LWin Up}
 Sleep, 100
 Run, "%viewer%",,Max,pidviewer
-WinWaitActive, ahk_pid %pidviewer%
+WinWaitActive, ahk_exe %viewerProcess% ahk_pid %pidviewer%
   Send, {LWin Down}{Right}{LWin Up}
 
 IfWinActive, ahk_pid %pideditor%
