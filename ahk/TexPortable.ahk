@@ -34,11 +34,13 @@ else
 
 RunWait, %A_WorkingDir%\FontsPortable\FontsPortable.exe -add
 Run, "%editor%" %template%,,Max,pideditor
-WinWaitActive, ahk_exe %editorProcess% ahk_pid %pideditor%
+WinWait, ahk_exe %editorProcess% ahk_pid %pideditor%
+  WinActivate
   Send, {LWin Down}{Left}{LWin Up}
 Sleep, 100
 Run, "%viewer%",,Max,pidviewer
-WinWaitActive, ahk_exe %viewerProcess% ahk_pid %pidviewer%
+WinWait, ahk_exe %viewerProcess% ahk_pid %pidviewer%
+  WinActivate
   Send, {LWin Down}{Right}{LWin Up}
 
 IfWinActive, ahk_pid %pideditor%
