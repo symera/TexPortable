@@ -18,10 +18,13 @@ texlibProcess = miktex-taskbar-icon.tmp
 
 IfNotExist, %editor%
   MsgBox, Can't find %editorName%.
+  ExitApp
 IfNotExist, %viewer%
   MsgBox, Can't find %viewerName%.
+  ExitApp
 IfNotExist, %texlib%
   MsgBox, Can't find %texlibName%.
+  ExitApp
 Process, Exist, %texlibProcess%
 if Errorlevel != 0
 {
@@ -58,12 +61,12 @@ ExitApp
 activateEditor:
   WinWaitActive, ahk_pid %pidviewer%
   WinActivate, ahk_pid %pideditor%
-  return
+return
 
 closeViewer:
   IfWinExist, %viewerName% ahk_pid %pidviewer%
     WinClose
-  return
+return
 
 closeTexlib:
   WM_CLOSE=0x10
@@ -78,4 +81,4 @@ closeTexlib:
     ;PostMessage, WM_QUIT
   }
   else MsgBox, Can't find %texlibName%! Maybe you closed it already?
-  return
+return
