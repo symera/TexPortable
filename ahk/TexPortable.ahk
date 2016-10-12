@@ -8,20 +8,21 @@ SetWorkingDir %A_ScriptDir%                      ; ensures a consistent starting
 template = %A_WorkingDir%\Documents\Template\Template.tex
 editor = %A_WorkingDir%\Texmaker\texmaker.exe
 editorName = Texmaker
+editorProcess := RegExReplace(editor, "^.*\\(.+$)", "$1")
 viewer = %A_WorkingDir%\SumatraPDF\SumatraPDF.exe
 viewerName = SumatraPDF
+viewerProcess := RegExReplace(viewer, "^.*\\(.+$)", "$1")
 texlib = %A_WorkingDir%\MiKTeX\miktex\bin\miktex-taskbar-icon.exe
-texlibProcess = miktex-taskbar-icon.tmp
 texlibName = MiKTeX
+texlibProcess = miktex-taskbar-icon.tmp
 
 ; check for components
 IfNotExist, %editor%
-  MsgBox, Can't find %editorName%.
+  Error(editorName)
 IfNotExist, %viewer%
-  MsgBox, Can't find %viewerName%.
+  Error(viewerName)
 IfNotExist, %texlib%
-  MsgBox, Can't find %texlibName%.
-
+  Error(texlibName)
 ; check for texlib and run only if it is not already running
 Process, Exist, %texlibProcess%
 if Errorlevel != 0
@@ -32,16 +33,6 @@ else
 {
   Run, "%texlib%",,,pidtexlib
 }
-
-; check whether script or os are running on x86 or x64 (not needed right now, but won't hurt anyway)
-if (A_PtrSize = 8)
-  bitScript = 64
-else ;if (A_PtrSize = 4)
-  bitScript = 32
-if (A_Is64bitOS)
-  bitOS = 64
-else
-  bitOS = 32
 
 ; add custom fonts from "FontsPortable\fonts" (temporary)
 RunWait, %A_WorkingDir%\FontsPortable\FontsPortable.exe -add
@@ -57,7 +48,7 @@ else Run, "%editor%" "%lastDoc%",,Max,pideditor
 ; wait for window to pop up and move it to the left half (only supported by >=win7)
 ; if last document does not exist, winwait for different title "Texmaker" instead of "Document"
 IfExist, %lastDoc%
-  WinWaitActive, Document ahk_pid %pideditor%
+  WinWaitActive, Document ahk_exe %editorProcess% ahk_pid %pideditor%
 else WinWaitActive, Texmaker ahk_pid %pideditor%
   Send, {LWin Down}{Left}{LWin Up}
 
@@ -67,7 +58,7 @@ Sleep, 250
 ; open viewer (maximized), save pid for later
 Run, "%viewer%",,Max,pidviewer
 ; wait for window to pop up and move it to the right half (only supported by >=win7)
-WinWaitActive, %viewerName% ahk_pid %pidviewer%
+WinWaitActive, %viewerName% ahk_exe %viewerProcess% ahk_pid %pidviewer%
   Send, {LWin Down}{Right}{LWin Up}
 
 ; if viewer gets active after hitting f1 (= compiling) switch back to editor (to continue editing without switching back)
@@ -87,6 +78,12 @@ RunWait, %A_WorkingDir%\FontsPortable\FontsPortable.exe -remove
 
 ; exit texportable
 ExitApp
+
+Error(component)
+{
+  MsgBox % "Can't find " . component . "."
+  ExitApp
+}
 
 activateEditor:
   WinWaitActive, ahk_pid %pidviewer%
