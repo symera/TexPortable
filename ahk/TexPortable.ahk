@@ -51,7 +51,7 @@ else Run, "%editor%" "%lastDoc%",,Max,pideditor
 ; if last document does not exist, winwait for different title "Texmaker" instead of "Document"
 IfExist, %lastDoc%
   WinWaitActive, Document ahk_exe %editorProcess% ahk_pid %pideditor%
-else WinWaitActive, %editorName%  ahk_exe %editorProcess% ahk_pid %pideditor%
+else WinWaitActive, %editorName% ahk_exe %editorProcess% ahk_pid %pideditor%
   Send, {LWin Down}{Left}{LWin Up}
 
 ; wait a little while before continuing (fix for Windows 10)
