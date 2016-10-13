@@ -1,6 +1,7 @@
 #NoTrayIcon                                      ; disables the showing of a tray icon
 #SingleInstance force                            ; determines whether a script is allowed to run again when it is already running - FORCE skips the dialog box and replaces the old instance automatically
 #NoEnv                                           ; prevents empty variables from being looked up as potential environment variables
+SetTitleMatchMode, 2                             ; a window's title can contain WinTitle anywhere inside it to be a match
 SendMode Input                                   ; recommended for new scripts due to its superior speed and reliability
 SetWorkingDir %A_ScriptDir%                      ; ensures a consistent starting directory
 
@@ -14,15 +15,16 @@ viewerName = SumatraPDF
 viewerProcess := RegExReplace(viewer, "^.*\\(.+$)", "$1")
 texlib = %A_WorkingDir%\MiKTeX\miktex\bin\miktex-taskbar-icon.exe
 texlibName = MiKTeX
+;texlibProcess := RegExReplace(viewer, "^.*\\(.+$)\.exe", "$1.tmp")
 texlibProcess = miktex-taskbar-icon.tmp
 
 ; check for components
 IfNotExist, %editor%
-  Error(editorName)
+  error(editorName)
 IfNotExist, %viewer%
-  Error(viewerName)
+  error(viewerName)
 IfNotExist, %texlib%
-  Error(texlibName)
+  error(texlibName)
 ; check for texlib and run only if it is not already running
 Process, Exist, %texlibProcess%
 if Errorlevel != 0
@@ -49,7 +51,7 @@ else Run, "%editor%" "%lastDoc%",,Max,pideditor
 ; if last document does not exist, winwait for different title "Texmaker" instead of "Document"
 IfExist, %lastDoc%
   WinWaitActive, Document ahk_exe %editorProcess% ahk_pid %pideditor%
-else WinWaitActive, Texmaker ahk_pid %pideditor%
+else WinWaitActive, %editorName%  ahk_exe %editorProcess% ahk_pid %pideditor%
   Send, {LWin Down}{Left}{LWin Up}
 
 ; wait a little while before continuing (fix for Windows 10)
@@ -79,7 +81,7 @@ RunWait, %A_WorkingDir%\FontsPortable\FontsPortable.exe -remove
 ; exit texportable
 ExitApp
 
-Error(component)
+error(component)
 {
   MsgBox % "Can't find " . component . "."
   ExitApp
