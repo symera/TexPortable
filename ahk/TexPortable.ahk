@@ -15,8 +15,7 @@ viewerName = SumatraPDF
 viewerProcess := RegExReplace(viewer, "^.*\\(.+$)", "$1")
 texlib = %A_WorkingDir%\MiKTeX\miktex\bin\miktex-taskbar-icon.exe
 texlibName = MiKTeX
-;texlibProcess := RegExReplace(viewer, "^.*\\(.+$)\.exe", "$1.tmp")
-texlibProcess = miktex-taskbar-icon.tmp
+texlibProcess := RegExReplace(texlib, "^.*\\(.+)\.exe$", "$1.tmp")
 
 ; check for components
 IfNotExist, %editor%
@@ -110,4 +109,4 @@ closeTexlib:
     ;PostMessage, WM_QUIT
   }
   else MsgBox, Can't find %texlibName%! Maybe you closed it already?
-  return
+return
