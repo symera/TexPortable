@@ -10,7 +10,7 @@
 
 TexPortable is a convenient collection of free software in one portable package for typing LaTeX documents right from scratch. It is made for Windows operating systems. All components (MiKTeX, Texmaker and SumatraPDF) are portable versions, there is no need to install anything.
 
-Compile [Editor -> Viewer] | Inverse Search [Viewer -> Editor]
+Compiling [Editor -> Viewer] | Inverse Search [Viewer -> Editor]
 ------------ | -------------
 ![Screenshot (compile)] | ![Screenshot (inverse)]
 Pressing `F1` will highlight current text segment in viewer (after compiling) | Double-click will highlight specific text segment in editor
