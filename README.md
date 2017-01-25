@@ -1,4 +1,5 @@
-[virustotal]: http://www.virustotal.com/en/file/118c200de2c94cbb53bdd55242254ed2f177d0ca62a24a619f9f42803ab90877/analysis/1455246335/
+[virustotal]: https://virustotal.com/en/file/3d44408adcb047c2deb87cf3401b1af19c9ae4e82a481ebd6238f0e3bf04a9b1/analysis/1485379734/
+[download-latest]: https://drive.google.com/a/symera.de/uc?id=0B_Dtz2OFld1ibk54OVlDeEMxN00&export=download
 [contact me]: mailto:info@symera.de?subject=TexPortable
 
 [Screenshot (compile)]: ./screenshots/2017-01-25_compile.png
@@ -19,11 +20,46 @@ No need to bother or care about settings and configuration for DDE commands, inv
 
 ## Where can I get it?
 
-Right [here](download.md). You need to extract the compressed self-extracting file in order to use it. Just open the file and select a folder. The extracted files will probably take about 700 MiB of space. Please have this in mind if you are going to use it on a USB flash-drive (which I cannot recommended btw, quite slow performance unfortunately). I recommend using it with a HDD or even better with SSD drives, because of a much faster performance while launching TexPortable and compiling LaTeX documents.
+You can [download the latest version of TexPortable right here][download-latest].
 
-If you want to dig deeper or would like to know more details about the setup, [here you go](setup.md).
+Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **700 MiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which I cannot recommended btw, quite slow performance unfortunately). I recommend using it with a HDD or even better with SSD drives, because of a much faster performance while launching TexPortable and compiling LaTeX documents.
+
+If you want to dig deeper or would like to know more details about the setup, [go ahead](setup.md).
 
 Feel free to [contact me] if you have any further questions, feedback, or maybe suggestions for improvements.
+
+### Version History
+
+Date       | MiKTeX   | Texmaker | SumatraPDF | TexPortable
+---        | ---      | ---   | ---     | ---
+2017-01-25 | 2.9.6221 |	4.5 	| 3.1.2 	| 1.5
+2016-03-28 | 2.9.5857 |	4.5 	| 3.1.1 	| 1.4
+2016-02-12 | 2.9.5857 |	4.5 	| 3.1.1 	| 1.3
+2015-02-04 | 2.9.5105 |	4.4.1 | 3.0     | 1.2
+2014-08-17 | 2.9.5105 |	4.3 	| 2.5.2 	| 1.2
+2014-05-20 | 2.9.5105 |	4.2 	| 2.5.2 	| 1.1
+2014-01-30 | 2.9.5105 |	4.1.1 | 2.4 	  | 1.0
+
+Older versions can be found by browsing the [archive](https://drive.google.com/folderview?id=0B_Dtz2OFld1iemw2VmhwYUIweUE&usp=sharing#list) (hosted on Google Drive).
+
+### Integrity
+
+Antivirus scan report available at [virustotal.com][virustotal].
+
+Hash sums of launcher file `TexPortable.exe` (latest version):
+```
+MD5: 00451E4FD5DBCF991CCAE01459591B1D
+RIPEMD-160: CFE0F2A8B95C5E7E26EF3366FF162D3C269E1125
+SHA-1: 2E7CC2FDB9D86482CBB0CBC717DB496906FDE88C
+SHA-256: 3D44408ADCB047C2DEB87CF3401B1AF19C9AE4E82A481EBD6238F0E3BF04A9B1
+```
+Hash sums of complete package file `YYYY-MM-DD TexPortable.exe` (latest version):
+```
+MD5: 7F57E492F89F36EAC56CDC8CA82B9598
+RIPEMD-160: 092F459D72A792DD7D5B44929179F8713B4F6706
+SHA-1: 495DD28A9237B88E4919DE04E986B139E57F9194
+SHA-256: 1F9AC4C333FE76B3CE8EEBF117D9888CDB4A417915CDDA882D68D1114FBC8CE7
+```
 
 ## Ingredients
 
@@ -33,19 +69,20 @@ TeX distribution | [MiKTeX](https://miktex.org/)
 LaTeX editor | [Texmaker](http://www.xm1math.net/texmaker/)
 PDF viewer | [SumatraPDF](http://blog.kowalczyk.info/software/sumatrapdf/)
 Launcher | [TexPortable](setup.md)
-[Version History](download.md)
-
-Template file for LaTeX: `Documents/Template/Template.tex` (edit this file to fit your purpose if needed)
 
 ## FAQ (frequently asked questions)
 
-
 * What kind of drive should I use?  
   From best-case to worst-case: **RAM-Disk > Fast SSD > HDD > Slow SSD > USB flash drive**
+  
+* Is it possible to edit the template or even better select my own project.tex to load right away?  
+  I suggest you edit the template (`Documents/Template/Template.tex`) to fit your purpose if needed. In case you don't want any template to load at startup, just rename or delete the template-folder and TexPortable is going to start Texmaker with the last document.
+  
 * Why will TexPortable.exe be recognized as an infected file and what can I do about this?  
   The executable file `TexPortable.exe` is based on a script written and compiled with AutoHotkey. Some Antivirus applications don't trust AutoHotkey scripts in general. Here are two ways to make sure it's not harmful:  
   * the easiest way is to compare the hash value of the file and look it up on (or compare it to) sites like [virustotal]. You can calculate the hash (with [Multihasher](http://www.abelhadigital.com/multihasher) for example) or even [upload](https://www.virustotal.com/) the file yourself.
   * the "hard" way: I've published a [manual](setup.md) and further informations regarding the script. This way you can compile the source code by yourself. It's public and on the same page. You need [AutoHotkey](http://www.autohotkey.com/) to compile the source code.
+  
 * My system refuses to run texmaker.exe, how can I solve this?  
   If you are working with a 32bit system try replacing Texmaker\texmaker.exe with a previous version of texmaker.exe (<= 4.4.1) or stick with the old `2015-02-04 TexPortable` (not recommended though).
 
