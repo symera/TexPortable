@@ -39,9 +39,9 @@ Feel free to [contact me] if you have any further questions, feedback, or maybe 
 
 ### Version History
 
-Date       | MiKTeX   | Texmaker | SumatraPDF | TexPortable
+Release    | MiKTeX   | Texmaker | SumatraPDF | TexPortable
 ---        | ---      | ---   | ---     | ---
-2017-01-25 | 2.9.6221 |	4.5 	| 3.1.2 	| 1.5
+**2017-01-25** | **2.9.6221** |	**4.5** 	| **3.1.2** 	| **1.5**
 2016-03-28 | 2.9.5857 |	4.5 	| 3.1.1 	| 1.4
 2016-02-12 | 2.9.5857 |	4.5 	| 3.1.1 	| 1.3
 2015-02-04 | 2.9.5105 |	4.4.1 | 3.0     | 1.2
@@ -49,7 +49,7 @@ Date       | MiKTeX   | Texmaker | SumatraPDF | TexPortable
 2014-05-20 | 2.9.5105 |	4.2 	| 2.5.2 	| 1.1
 2014-01-30 | 2.9.5105 |	4.1.1 | 2.4 	  | 1.0
 
-Older versions can be found by browsing the [archive](https://drive.google.com/folderview?id=0B_Dtz2OFld1iemw2VmhwYUIweUE&usp=sharing#list) (hosted on Google Drive).
+You can browse the [archive](https://drive.google.com/folderview?id=0B_Dtz2OFld1iemw2VmhwYUIweUE&usp=sharing#list) if you are looking for a previous release.
 
 ### Integrity
 
@@ -83,7 +83,7 @@ SHA-256: 1F9AC4C333FE76B3CE8EEBF117D9888CDB4A417915CDDA882D68D1114FBC8CE7
 * Why will TexPortable.exe be recognized as an infected file and what can I do about this?  
   The executable file `TexPortable.exe` is based on a script written and compiled with AutoHotkey. Some Antivirus applications don't trust AutoHotkey scripts in general. Here are two ways to make sure it's not harmful:  
   * the easiest way is to compare the hash value of the file and look it up on (or compare it to) sites like [virustotal]. You can calculate the hash (with [Multihasher](http://www.abelhadigital.com/multihasher) for example) or even [upload](https://www.virustotal.com/) the file yourself.
-  * the "hard" way: I've published a [manual](setup.md) and further informations regarding the script. This way you can compile the source code by yourself. It's public and on the same page. You need [AutoHotkey](http://www.autohotkey.com/) to compile the source code.
+  * the "hard" way: I've published a [page](setup.md) with further explanations regarding the script. This way you can compile the source code by yourself. It's public and available [here](ahk/TexPortable.ahk). You need [AutoHotkey](http://www.autohotkey.com/) in order to compile the source code.
   
 * My system refuses to run texmaker.exe, how can I solve this?  
   If you are working with a 32bit system try replacing Texmaker\texmaker.exe with a previous version of texmaker.exe (<= 4.4.1) or stick with the old `2015-02-04 TexPortable` (not recommended though).
