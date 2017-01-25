@@ -1,5 +1,5 @@
 [virustotal]: https://virustotal.com/en/file/3d44408adcb047c2deb87cf3401b1af19c9ae4e82a481ebd6238f0e3bf04a9b1/analysis/1485379734/
-[download-latest]: https://drive.google.com/a/symera.de/uc?id=0B_Dtz2OFld1ibk54OVlDeEMxN00&export=download
+[download]: https://drive.google.com/a/symera.de/uc?id=0B_Dtz2OFld1iR1pHX3ZpWTR4YVk&export=download
 [contact me]: mailto:info@symera.de?subject=TexPortable
 
 [Screenshot (compile)]: ./screenshots/2017-01-25_compile.png
@@ -20,7 +20,7 @@ No need to bother or care about settings and configuration for DDE commands, inv
 
 ## Where can I get it?
 
-You can [download the latest version of TexPortable right here][download-latest].
+You can [download the latest version of TexPortable right here][download].
 
 Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **700 MiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which I cannot recommended btw, quite slow performance unfortunately). I recommend using it with a HDD or even better with SSD drives, because of a much faster performance while launching TexPortable and compiling LaTeX documents.
 
@@ -44,8 +44,7 @@ Older versions can be found by browsing the [archive](https://drive.google.com/f
 
 ### Integrity
 
-Antivirus scan report available at [virustotal.com][virustotal].
-
+#### Launcher
 Hash sums of launcher file `TexPortable.exe` (latest version):
 ```
 MD5: 00451E4FD5DBCF991CCAE01459591B1D
@@ -53,7 +52,10 @@ RIPEMD-160: CFE0F2A8B95C5E7E26EF3366FF162D3C269E1125
 SHA-1: 2E7CC2FDB9D86482CBB0CBC717DB496906FDE88C
 SHA-256: 3D44408ADCB047C2DEB87CF3401B1AF19C9AE4E82A481EBD6238F0E3BF04A9B1
 ```
-Hash sums of complete package file `YYYY-MM-DD TexPortable.exe` (latest version):
+Antivirus scan report available at [virustotal][virustotal].
+
+#### Self-Extracting Package
+Hash sums of self-extracting package file `YYYY-MM-DD TexPortable.exe` (latest version):
 ```
 MD5: 7F57E492F89F36EAC56CDC8CA82B9598
 RIPEMD-160: 092F459D72A792DD7D5B44929179F8713B4F6706
@@ -70,7 +72,7 @@ LaTeX editor | [Texmaker](http://www.xm1math.net/texmaker/)
 PDF viewer | [SumatraPDF](http://blog.kowalczyk.info/software/sumatrapdf/)
 Launcher | [TexPortable](setup.md)
 
-## FAQ (frequently asked questions)
+## FAQ (Frequently Asked Questions)
 
 * What kind of drive should I use?  
   From best-case to worst-case: **RAM-Disk > Fast SSD > HDD > Slow SSD > USB flash drive**
