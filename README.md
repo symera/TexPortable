@@ -2,8 +2,9 @@
 [download]: https://drive.google.com/a/symera.de/uc?id=0B_Dtz2OFld1iR1pHX3ZpWTR4YVk&export=download
 [contact me]: mailto:info@symera.de?subject=TexPortable
 
-[Screenshot (compile)]: ./screenshots/2017-01-25_compile.png
-[Screenshot (inverse)]: ./screenshots/2017-01-25_inverse.png
+[logo]: img/logo.png
+[Screenshot (compile)]: img/2017-01-25_compile.png
+[Screenshot (inverse)]: img/2017-01-25_inverse.png
 
 # TexPortable
 
