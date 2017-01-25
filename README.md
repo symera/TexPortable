@@ -27,7 +27,7 @@ PDF viewer | [SumatraPDF](http://blog.kowalczyk.info/software/sumatrapdf/)
 Launcher | [TexPortable](setup.md)
 
 ## Where can I get it?
-You can [download the latest version of TexPortable right here][download].
+[Download the latest version of TexPortable right here][download].
 
 Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **700 MiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which I cannot recommended btw, quite slow performance unfortunately). I recommend using it with a HDD or even better with SSD drives, because of a much faster performance while launching TexPortable and compiling LaTeX documents.
 
