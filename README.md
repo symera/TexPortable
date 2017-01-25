@@ -18,6 +18,15 @@ Pressing `F1` will highlight current text segment in viewer (after compiling) | 
 
 No need to bother or care about settings and configuration for DDE commands, inverse search or commandline arguments. TexPortable is already configured to support the features of the editor and the viewer. Just download the package file, extract it and start right away.
 
+### Ingredients
+
+What? | Which?
+------------ | -------------
+TeX distribution | [MiKTeX](https://miktex.org/)
+LaTeX editor | [Texmaker](http://www.xm1math.net/texmaker/)
+PDF viewer | [SumatraPDF](http://blog.kowalczyk.info/software/sumatrapdf/)
+Launcher | [TexPortable](setup.md)
+
 ## Where can I get it?
 
 You can [download the latest version of TexPortable right here][download].
@@ -62,15 +71,6 @@ RIPEMD-160: 092F459D72A792DD7D5B44929179F8713B4F6706
 SHA-1: 495DD28A9237B88E4919DE04E986B139E57F9194
 SHA-256: 1F9AC4C333FE76B3CE8EEBF117D9888CDB4A417915CDDA882D68D1114FBC8CE7
 ```
-
-## Ingredients
-
-What? | Which?
------------- | -------------
-TeX distribution | [MiKTeX](https://miktex.org/)
-LaTeX editor | [Texmaker](http://www.xm1math.net/texmaker/)
-PDF viewer | [SumatraPDF](http://blog.kowalczyk.info/software/sumatrapdf/)
-Launcher | [TexPortable](setup.md)
 
 ## FAQ (Frequently Asked Questions)
 
