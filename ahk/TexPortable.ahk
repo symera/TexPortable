@@ -5,12 +5,22 @@ SetTitleMatchMode, 2                             ; a window's title can contain 
 SendMode Input                                   ; recommended for new scripts due to its superior speed and reliability
 SetWorkingDir %A_ScriptDir%                      ; ensures a consistent starting directory
 
+; check "bit"ness
+if (A_PtrSize = 8)
+  bitScript = 64
+else ;if (A_PtrSize = 4)
+  bitScript = 32
+if (A_Is64bitOS)
+  bitOS = 64
+else
+  bitOS = 32
+
 ; set variables for path and names
 template = %A_WorkingDir%\Documents\Template\Template.tex
 editor = %A_WorkingDir%\Texmaker\texmaker.exe
 editorName = Texmaker
 editorProcess := RegExReplace(editor, "^.*\\(.+$)", "$1")
-viewer = %A_WorkingDir%\SumatraPDF\SumatraPDF.exe
+viewer = %A_WorkingDir%\SumatraPDF\SumatraPDF%bitOS%.exe
 viewerName = SumatraPDF
 viewerProcess := RegExReplace(viewer, "^.*\\(.+$)", "$1")
 texlib = %A_WorkingDir%\MiKTeX\miktex\bin\miktex-taskbar-icon.exe
@@ -22,16 +32,6 @@ fontsDir = %A_ScriptDir%\fonts
 fontsList := list_files(fontsDir)
 ;if fontsList = 
 ;  MsgBox, No fonts have been found in`n`n%fontsDir%
-
-; check "bit"ness
-if (A_PtrSize = 8)
-  bitScript = 64
-else ;if (A_PtrSize = 4)
-  bitScript = 32
-if (A_Is64bitOS)
-  bitOS = 64
-else
-  bitOS = 32
 
 ; check for components
 IfNotExist, %editor%
@@ -55,7 +55,10 @@ else
 ; add custom fonts for the session from "Fonts"
 RunWait, %A_ScriptDir%\fonts\bin\regfont%bitOS%.exe -a %fontsList%,%fontsDir%,Hide
 
-; get last loaded document from editor settings
+; adjust path to viewer in editor settings
+IniWrite, "./SumatraPDF/SumatraPDF%bitOS%.exe -reuse-instance `%.pdf -forward-search #.tex @", %A_WorkingDir%\Texmaker\texmaker.ini, texmaker, Tools\Pdf
+
+; get last (most recent) document from editor settings
 IniRead, lastDoc, %A_WorkingDir%\Texmaker\texmaker.ini, texmaker, Files\Last`%20Document
 StringReplace, lastDoc, lastDoc, \\, \, All
 
