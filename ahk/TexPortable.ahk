@@ -17,14 +17,31 @@ texlib = %A_WorkingDir%\MiKTeX\miktex\bin\miktex-taskbar-icon.exe
 texlibName = MiKTeX
 texlibProcess := RegExReplace(texlib, "^.*\\(.+)\.exe$", "$1.tmp")
 
+; save fonts list
+fontsDir = %A_ScriptDir%\fonts
+fontsList := list_files(fontsDir)
+;if fontsList = 
+;  MsgBox, No fonts have been found in`n`n%fontsDir%
+
+; check "bit"ness
+if (A_PtrSize = 8)
+  bitScript = 64
+else ;if (A_PtrSize = 4)
+  bitScript = 32
+if (A_Is64bitOS)
+  bitOS = 64
+else
+  bitOS = 32
+
 ; check for components
 IfNotExist, %editor%
-  error(editorName)
+  missing(editorName)
 IfNotExist, %viewer%
-  error(viewerName)
+  missing(viewerName)
 IfNotExist, %texlib%
-  error(texlibName)
-; check for texlib and run only if it is not already running
+  missing(texlibName)
+
+; check for texlib process and run only if necessary
 Process, Exist, %texlibProcess%
 if Errorlevel != 0
 {
@@ -35,9 +52,10 @@ else
   Run, "%texlib%",,,pidtexlib
 }
 
-; add custom fonts from "FontsPortable\fonts" (temporary)
-RunWait, %A_WorkingDir%\FontsPortable\FontsPortable.exe -add
+; add custom fonts for the session from "Fonts"
+RunWait, %A_ScriptDir%\fonts\bin\regfont%bitOS%.exe -a %fontsList%,%fontsDir%,Hide
 
+; get last loaded document from editor settings
 IniRead, lastDoc, %A_WorkingDir%\Texmaker\texmaker.ini, texmaker, Files\Last`%20Document
 StringReplace, lastDoc, lastDoc, \\, \, All
 
@@ -51,7 +69,7 @@ else Run, "%editor%" "%lastDoc%",,Max,pideditor
 IfExist, %lastDoc%
   WinWaitActive, Document ahk_exe %editorProcess% ahk_pid %pideditor%
 else WinWaitActive, %editorName% ahk_exe %editorProcess% ahk_pid %pideditor%
-  Send, {LWin Down}{Left}{LWin Up}
+  moveWindow("Left")
 
 ; wait a little while before continuing (fix for Windows 10)
 Sleep, 250
@@ -60,7 +78,7 @@ Sleep, 250
 Run, "%viewer%",,Max,pidviewer
 ; wait for window to pop up and move it to the right half (only supported by >=win7)
 WinWaitActive, %viewerName% ahk_exe %viewerProcess% ahk_pid %pidviewer%
-  Send, {LWin Down}{Right}{LWin Up}
+  moveWindow("Right")
 
 ; if viewer gets active after hitting f1 (= compiling) switch back to editor (to continue editing without switching back)
 IfWinActive, ahk_pid %pideditor%
@@ -74,16 +92,37 @@ WinWaitClose
 Gosub, closeTexlib
 Gosub, closeViewer
 
-; remove custom and temporary registered fonts from "FontsPortable\fonts"
-RunWait, %A_WorkingDir%\FontsPortable\FontsPortable.exe -remove
+; remove custom temporary registered fonts
+RunWait, %A_ScriptDir%\fonts\bin\regfont%bitOS%.exe -r %fontsList%,%fontsDir%,Hide
 
-; exit texportable
+; exit texportable launcher
 ExitApp
 
-error(component)
+; list_files function for registering fonts
+list_files(Directory)
+{
+	files =
+	Loop %Directory%\*.otf
+	{
+		files = %files% "%A_LoopFileName%"
+	}
+	Loop %Directory%\*.ttf
+	{
+		files = %files% "%A_LoopFileName%"
+	}
+	return files
+}
+
+; show message in case components are missing
+missing(component)
 {
   MsgBox % "Can't find " . component . "."
   ExitApp
+}
+
+moveWindow(direction)
+{
+  Send, {LWin Down}{%direction%}{LWin Up}
 }
 
 activateEditor:
