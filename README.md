@@ -5,7 +5,7 @@
 * set up a gui for configuration (templates, backup, display-setup, etc.)
 * check for "new" settings file, if paths or links are "wrong" provide msgbox for adjusting them
 * overwrite and backup settings from Texmaker and SumatraPDF, when custom settings files are located in a backup folder
-* if template file exists, load as parameter, otherwise load last/recent document from texmaker
+* ~~if template file exists, load as parameter, otherwise load last/recent document from texmaker~~
 * ~~check issues with 32bit windows platforms~~
 * ~~provide a section/page for faq~~
 * ~~include custom fonts for editor~~
