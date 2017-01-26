@@ -30,7 +30,7 @@ Launcher | [TexPortable](setup.md)
 ## Where can I get it?
 [Download the latest version of TexPortable][download].
 
-Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **700 MiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which I cannot recommended btw, quite slow performance unfortunately). I recommend using it with a HDD or even better with SSD drives, because of a much faster performance while launching TexPortable and compiling LaTeX documents.
+Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **850 MiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which I cannot recommended btw, quite slow performance unfortunately). I recommend using it with a HDD or even better with SSD drives, because of a much faster performance while launching TexPortable and compiling LaTeX documents.
 
 If you want to dig deeper or would like to know more details about the setup: [here you go](setup.md).
 
