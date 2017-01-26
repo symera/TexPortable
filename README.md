@@ -11,7 +11,7 @@
 # TexPortable
 
 ## What is it?
-TexPortable is a convenient collection of free software in one portable package for typing LaTeX documents right from scratch. It is made for Windows operating systems. All components (MiKTeX, Texmaker and SumatraPDF) are portable versions, there is no need to install anything.
+TexPortable is a convenient collection of free software in one portable package for typing LaTeX documents right from scratch. It is made for Windows operating systems. All components (*MiKTeX*, *Texmaker* and *SumatraPDF*) are portable versions, there is no need to install anything.
 
 Compiling [Editor -> Viewer]: [![img_t_compile]][img_compile] | Inverse Search [Viewer -> Editor]: [![img_t_inverse]][img_inverse]
 ------------ | -------------
@@ -83,7 +83,7 @@ SHA-256: 1F9AC4C333FE76B3CE8EEBF117D9888CDB4A417915CDDA882D68D1114FBC8CE7
   * the "hard" way: I've published a [page](setup.md) with further explanations regarding the script. This way you can compile the source code by yourself. It's public and available [here](ahk/TexPortable.ahk). You need [AutoHotkey](http://www.autohotkey.com/) in order to compile the source code.
   
 * My system refuses to run texmaker.exe, how can I solve this?  
-  If you are working with a 32bit system try replacing Texmaker\texmaker.exe with a previous version of texmaker.exe (<= 4.4.1) or stick with the old `2015-02-04 TexPortable` (not recommended though).
+  If you are working with a 32bit system try replacing `Texmaker\texmaker.exe` with a previous version of `texmaker` (<= 4.4.1) or stick with the old `2015-02-04 TexPortable` (not recommended though).
 
 ## Wishlist
 - [x] if template file exists, load as parameter, otherwise load last/recent document from texmaker
