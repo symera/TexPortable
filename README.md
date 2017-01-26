@@ -3,8 +3,8 @@
 [contact me]: mailto:info@symera.de?subject=TexPortable
 
 [logo]: img/logo.png
-[Screenshot (compile)]: img/2017-01-25_compile.png
-[Screenshot (inverse)]: img/2017-01-25_inverse.png
+[Screenshot (compile)]: img/2017-01-25_compile_t.png
+[Screenshot (inverse)]: img/2017-01-25_inverse_t.png
 
 # TexPortable
 
