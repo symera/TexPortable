@@ -86,7 +86,9 @@ SHA-256: 1F9AC4C333FE76B3CE8EEBF117D9888CDB4A417915CDDA882D68D1114FBC8CE7
   If you are working with a 32bit system try replacing Texmaker\texmaker.exe with a previous version of texmaker.exe (<= 4.4.1) or stick with the old `2015-02-04 TexPortable` (not recommended though).
 
 ## Wishlist
-- [ ] check setting files (`SumatraPDF-settings.txt` and 
+- [ ] making updates easy
+  - check `InverseSearchCmdLine = pass.exe "%f" -line %l` in `SumatraPDF-settings.txt`
+  - check paths for `Tools\...` in `texmaker.ini`
 - [ ] set up a gui for configuration (templates, backup, display-setup, etc.)
 - [ ] check for "new" settings file, if paths or links are "wrong" provide msgbox for adjusting them
 - [ ] overwrite and backup settings from Texmaker and SumatraPDF, when custom settings files are located in a backup folder
