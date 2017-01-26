@@ -3,17 +3,18 @@
 [contact me]: mailto:info@symera.de?subject=TexPortable
 
 [logo]: img/logo.png
-[Screenshot (compile)]: img/2017-01-25_compile_t.png
-[Screenshot (inverse)]: img/2017-01-25_inverse_t.png
+[img_t_compile]: img/2017-01-25_compile_t.png
+[img_t_inverse]: img/2017-01-25_inverse_t.png
+[img_compile]: img/2017-01-25_compile.png
+[img_inverse]: img/2017-01-25_inverse.png
 
 # TexPortable
 
 ## What is it?
 TexPortable is a convenient collection of free software in one portable package for typing LaTeX documents right from scratch. It is made for Windows operating systems. All components (MiKTeX, Texmaker and SumatraPDF) are portable versions, there is no need to install anything.
 
-Compiling [Editor -> Viewer] | Inverse Search [Viewer -> Editor]
+Compiling [Editor -> Viewer]: [![img_t_compile]][img_compile] | Inverse Search [Viewer -> Editor]: [![img_t_inverse]][img_inverse]
 ------------ | -------------
-![Screenshot (compile)] | ![Screenshot (inverse)]
 Pressing `F1` will highlight current text segment in viewer (after compiling) | Double-click will highlight specific text segment in editor
 
 No need to bother or care about settings and configuration for DDE commands, inverse search or commandline arguments. TexPortable is already configured to support the features of the editor and the viewer. Just download the package file, extract it and start right away.
@@ -27,11 +28,11 @@ PDF viewer | [SumatraPDF](http://blog.kowalczyk.info/software/sumatrapdf/)
 Launcher | [TexPortable](setup.md)
 
 ## Where can I get it?
-[Download the latest version of TexPortable right here][download].
+[Download the latest version of TexPortable][download].
 
 Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **700 MiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which I cannot recommended btw, quite slow performance unfortunately). I recommend using it with a HDD or even better with SSD drives, because of a much faster performance while launching TexPortable and compiling LaTeX documents.
 
-If you want to dig deeper or would like to know more details about the setup, [go ahead](setup.md).
+If you want to dig deeper or would like to know more details about the setup: [here you go](setup.md).
 
 Feel free to [contact me] if you have any further questions, feedback, or maybe suggestions for improvements.
 
@@ -85,6 +86,7 @@ SHA-256: 1F9AC4C333FE76B3CE8EEBF117D9888CDB4A417915CDDA882D68D1114FBC8CE7
   If you are working with a 32bit system try replacing Texmaker\texmaker.exe with a previous version of texmaker.exe (<= 4.4.1) or stick with the old `2015-02-04 TexPortable` (not recommended though).
 
 ## Wishlist
+- [ ] check setting files (`SumatraPDF-settings.txt` and 
 - [ ] set up a gui for configuration (templates, backup, display-setup, etc.)
 - [ ] check for "new" settings file, if paths or links are "wrong" provide msgbox for adjusting them
 - [ ] overwrite and backup settings from Texmaker and SumatraPDF, when custom settings files are located in a backup folder
