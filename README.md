@@ -91,9 +91,11 @@ SHA-256: 1F9AC4C333FE76B3CE8EEBF117D9888CDB4A417915CDDA882D68D1114FBC8CE7
 - [x] include custom fonts for editor
 - [x] run commands should be based on PID not on ahk_class or (even worse) the title
 - [x] split editor and viewer side by side
+- [x] support TeX Live
 - [ ] making updates easy
   - check `InverseSearchCmdLine = pass.exe "%f" -line %l` in `SumatraPDF-settings.txt`
   - check paths for `Tools\...` in `texmaker.ini`
+- [ ] maybe switch to TeX Live for a smaller footprint
 - [ ] provide a parameter for dual monitor setup (TexPortable.exe -dual)
 - [ ] set up a gui for configuration (templates, backup, display-setup, etc.)
 
@@ -106,9 +108,8 @@ Here you go:
 * [TeXnicCenter](http://www.texniccenter.org/), another popular LaTeX Editor for Windows. No portable version though, but there may be a [inofficial workaround](http://www.latex-community.org/know-how/latex-editors/76-latex-editors-texniccenter/354-how-to-make-texniccenter-portable) to make it portable.
 
 ## Acknowledgements & Credits
-* Donald E. Knuth & Leslie Lamport (for TeX & LaTeX, for creating and sharing one of the best typesetting systems)
-* Christian Schenk (for MiKTeX, an easy way to get a TeX distribution)
-* Pascal Brachet (for Texmaker, a highly customizable and portable editor)
-* Krzysztof Kowalczyk (for SumatraPDF, the foobar2000 of PDF viewers)
-* the AutoHotkey-Team (without it, Windows wouldn't stand a chance against Linux in terms of customization)
-* and all the other contributors of great opensource software worldwide
+* Donald E. Knuth & Leslie Lamport (TeX & LaTeX)
+* Christian Schenk (MiKTeX)
+* Pascal Brachet (Texmaker)
+* Krzysztof Kowalczyk (SumatraPDF)
+* AutoHotkey
