@@ -5,6 +5,11 @@ SetTitleMatchMode, 2                             ; a window's title can contain 
 SendMode Input                                   ; recommended for new scripts due to its superior speed and reliability
 SetWorkingDir %A_ScriptDir%                      ; ensures a consistent starting directory
 
+; get monitor work area for splitting windows vertically
+SysGet, workArea, MonitorWorkArea
+winWidth := (workAreaRight-workAreaLeft)//2
+winHeight := workAreaBottom-workAreaTop
+
 ; check "bit"ness
 if (A_PtrSize = 8)
   bitScript = 64
@@ -72,7 +77,7 @@ else Run, "%editor%" "%lastDoc%",,Max,pideditor
 IfExist, %lastDoc%
   WinWaitActive, Document ahk_exe %editorProcess% ahk_pid %pideditor%
 else WinWaitActive, %editorName% ahk_exe %editorProcess% ahk_pid %pideditor%
-  moveWindow("Left")
+  WinMove, , , 0, 0, %winWidth%, %winHeight%
 
 ; wait a little while before continuing (fix for Windows 10)
 Sleep, 250
@@ -81,7 +86,7 @@ Sleep, 250
 Run, "%viewer%",,Max,pidviewer
 ; wait for window to pop up and move it to the right half (only supported by >=win7)
 WinWaitActive, %viewerName% ahk_exe %viewerProcess% ahk_pid %pidviewer%
-  moveWindow("Right")
+  WinMove, , , %winWidth%, 0, %winWidth%, %winHeight%
 
 ; if viewer gets active after hitting f1 (= compiling) switch back to editor (to continue editing without switching back)
 IfWinActive, ahk_pid %pideditor%
@@ -121,11 +126,6 @@ missing(component)
 {
   MsgBox % "Can't find " . component . "."
   ExitApp
-}
-
-moveWindow(direction)
-{
-  Send, {LWin Down}{%direction%}{LWin Up}
 }
 
 activateEditor:
