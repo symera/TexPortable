@@ -31,6 +31,10 @@ viewerProcess := RegExReplace(viewer, "^.*\\(.+$)", "$1")
 texlib = %A_WorkingDir%\MiKTeX\miktex\bin\miktex-taskbar-icon.exe
 texlibName = MiKTeX
 texlibProcess := RegExReplace(texlib, "^.*\\(.+)\.exe$", "$1.tmp")
+; supporting TeXLive in future
+;texlib = %A_WorkingDir%\TeXLive\tl-tray-menu.exe
+;texlibName = TeXLive
+;texlibProcess := RegExReplace(texlib, "^.*\\(.+$)", "$1")
 
 ; save fonts list
 fontsDir = %A_ScriptDir%\fonts
@@ -50,6 +54,8 @@ IfNotExist, %texlib%
 Process, Exist, %texlibProcess%
 if Errorlevel != 0
 {
+  ;Process, Close, %texlibProcess% ; only needed for TeX Live (tl-tray-menu.exe)
+  ;Run, "%texlib%",,,pidtexlib ; only needed for TeX Live (tl-tray-menu.exe)
   return
 }
 else
@@ -78,9 +84,6 @@ IfExist, %lastDoc%
   WinWaitActive, Document ahk_exe %editorProcess% ahk_pid %pideditor%
 else WinWaitActive, %editorName% ahk_exe %editorProcess% ahk_pid %pideditor%
   WinMove, , , 0, 0, %winWidth%, %winHeight%
-
-; wait a little while before continuing (fix for Windows 10) ; shouldn't be needed anymore
-;Sleep, 250
 
 ; open viewer (maximized), save pid for later
 Run, "%viewer%",,Max,pidviewer
@@ -147,6 +150,7 @@ closeTexlib:
   IfWinExist, ahk_pid %pid%
   {
     WinClose
+    ;Process, Close, %texlibProcess% ; only needed for TeX Live (tl-tray-menu.exe)
     ;PostMessage, WM_CLOSE
     ;PostMessage, WM_QUIT
   }
