@@ -102,8 +102,8 @@ Looking for alternatives or in search of other LaTeX stuff?
 
 Here you go:
 
-* [TeX Live](www.tug.org/texlive/) is (similar to MiKTeX) another well-known TeX distribution, but on the plus side a cross-platform one.
-* [TeXnicCenter](www.texniccenter.org/), another popular LaTeX Editor for Windows. No portable version though, but there may be a [inofficial workaround](www.latex-community.org/know-how/latex-editors/76-latex-editors-texniccenter/354-how-to-make-texniccenter-portable) to make it portable.
+* [TeX Live](http://www.tug.org/texlive/) is (similar to MiKTeX) another well-known TeX distribution, but on the plus side a cross-platform one.
+* [TeXnicCenter](http://www.texniccenter.org/), another popular LaTeX Editor for Windows. No portable version though, but there may be a [inofficial workaround](http://www.latex-community.org/know-how/latex-editors/76-latex-editors-texniccenter/354-how-to-make-texniccenter-portable) to make it portable.
 
 ## Acknowledgements & Credits
 * Donald E. Knuth & Leslie Lamport (for TeX & LaTeX, for creating and sharing one of the best typesetting systems)
