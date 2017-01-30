@@ -79,8 +79,8 @@ IfExist, %lastDoc%
 else WinWaitActive, %editorName% ahk_exe %editorProcess% ahk_pid %pideditor%
   WinMove, , , 0, 0, %winWidth%, %winHeight%
 
-; wait a little while before continuing (fix for Windows 10)
-Sleep, 250
+; wait a little while before continuing (fix for Windows 10) ; shouldn't be needed anymore
+;Sleep, 250
 
 ; open viewer (maximized), save pid for later
 Run, "%viewer%",,Max,pidviewer
