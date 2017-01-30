@@ -15,7 +15,7 @@ TexPortable is a convenient collection of free software in one portable package 
 
 Compiling [Editor -> Viewer]: [![img_t_compile]][img_compile] | Inverse Search [Viewer -> Editor]: [![img_t_inverse]][img_inverse]
 ------------ | -------------
-Pressing `F1` will highlight current text segment in viewer (after compiling) | Double-click will highlight specific text segment in editor
+Pressing `F1` will highlight current text segment in viewer (after compiling) | Double-click in viewer will highlight specific text segment in editor
 
 No need to bother or care about settings and configuration for DDE commands, inverse search or commandline arguments. TexPortable is already configured to support the features of the editor and the viewer. Just download the package file, extract it and start right away.
 
