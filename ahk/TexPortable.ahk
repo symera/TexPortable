@@ -9,6 +9,14 @@ SetWorkingDir %A_ScriptDir%                      ; ensures a consistent starting
 SysGet, workArea, MonitorWorkArea
 winWidth := (workAreaRight-workAreaLeft)//2
 winHeight := workAreaBottom-workAreaTop
+; borderless window splitting (support for windows 10)
+if % substr(a_osversion, 1, 2) = 10
+{
+  winBorder := 7
+  winWidth2 := winWidth-winBorder
+  winWidth += 2*winBorder
+  winHeight += winBorder
+}
 
 ; check "bit"ness
 if (A_PtrSize = 8)
@@ -78,18 +86,25 @@ StringReplace, lastDoc, lastDoc, \\, \, All
 IfExist, %template%
   Run, "%editor%" "%template%",,Max,pideditor
 else Run, "%editor%" "%lastDoc%",,Max,pideditor
-; wait for window to pop up and move it to the left half (only supported by >=win7)
+; wait for window to pop up and move it to the left half
 ; if last document does not exist, winwait for different title "Texmaker" instead of "Document"
 IfExist, %lastDoc%
   WinWaitActive, Document ahk_exe %editorProcess% ahk_pid %pideditor%
 else WinWaitActive, %editorName% ahk_exe %editorProcess% ahk_pid %pideditor%
+if % substr(a_osversion, 1, 2) = 10
+  WinMove, , , -7, 0, %winWidth%, %winHeight%
+else 
   WinMove, , , 0, 0, %winWidth%, %winHeight%
 
 ; open viewer (maximized), save pid for later
 Run, "%viewer%",,Max,pidviewer
-; wait for window to pop up and move it to the right half (only supported by >=win7)
+; wait for window to pop up and move it to the right half
 WinWaitActive, %viewerName% ahk_exe %viewerProcess% ahk_pid %pidviewer%
+if % substr(a_osversion, 1, 2) = 10
+  WinMove, , , %winWidth2%, 0, %winWidth%, %winHeight%
+else 
   WinMove, , , %winWidth%, 0, %winWidth%, %winHeight%
+
 
 ; if viewer gets active after hitting f1 (= compiling) switch back to editor (to continue editing without switching back)
 IfWinActive, ahk_pid %pideditor%
