@@ -1,3 +1,5 @@
+; TexPortable Launcher v1.6
+
 #NoTrayIcon                                      ; disables the showing of a tray icon
 #SingleInstance force                            ; determines whether a script is allowed to run again when it is already running - FORCE skips the dialog box and replaces the old instance automatically
 #NoEnv                                           ; prevents empty variables from being looked up as potential environment variables
@@ -10,7 +12,7 @@ SysGet, workArea, MonitorWorkArea
 winWidth := (workAreaRight-workAreaLeft)//2
 winHeight := workAreaBottom-workAreaTop
 ; borderless window splitting (support for windows 10)
-if % substr(a_osversion, 1, 2) = 10
+if % SubStr(A_OSVersion, 1, 2) = 10
 {
   winBorder := 7
   winWidth2 := winWidth-winBorder
@@ -91,7 +93,7 @@ else Run, "%editor%" "%lastDoc%",,Max,pideditor
 IfExist, %lastDoc%
   WinWaitActive, Document ahk_exe %editorProcess% ahk_pid %pideditor%
 else WinWaitActive, %editorName% ahk_exe %editorProcess% ahk_pid %pideditor%
-if % substr(a_osversion, 1, 2) = 10
+if % SubStr(A_OSVersion, 1, 2) = 10
   WinMove, , , -7, 0, %winWidth%, %winHeight%
 else 
   WinMove, , , 0, 0, %winWidth%, %winHeight%
@@ -100,7 +102,7 @@ else
 Run, "%viewer%",,Max,pidviewer
 ; wait for window to pop up and move it to the right half
 WinWaitActive, %viewerName% ahk_exe %viewerProcess% ahk_pid %pidviewer%
-if % substr(a_osversion, 1, 2) = 10
+if % SubStr(A_OSVersion, 1, 2) = 10
   WinMove, , , %winWidth2%, 0, %winWidth%, %winHeight%
 else 
   WinMove, , , %winWidth%, 0, %winWidth%, %winHeight%
