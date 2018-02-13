@@ -10,26 +10,27 @@
 
 # TexPortable
 
-## What is it?
-TexPortable is a convenient collection of free software in one portable package for typing LaTeX documents right from scratch. It is made for Windows operating systems. All components (*MiKTeX*, *Texmaker* and *SumatraPDF*) are portable versions, there is no need to install anything.
+TexPortable is a convenient collection of free software in one portable package for typing LaTeX documents right from scratch. It is made for Windows operating systems.
 
 Compiling [Editor -> Viewer]: [![img_t_compile]][img_compile] | Inverse Search [Viewer -> Editor]: [![img_t_inverse]][img_inverse]
 ------------ | -------------
 Pressing `F1` will highlight current text segment in viewer (after compiling) | Double-click in viewer will highlight specific text segment in editor
 
-No need to bother or care about settings and configuration for DDE commands, inverse search or commandline arguments. TexPortable is already configured to support the features of the editor and the viewer. Just download the package file, extract it and start right away.
+## Getting Started
 
-|Components |Including | 
-|---|---|
-|TeX distribution |[MiKTeX](https://miktex.org/) |
-|LaTeX editor |[Texmaker](http://www.xm1math.net/texmaker/) |
-|PDF viewer |[SumatraPDF](http://blog.kowalczyk.info/software/sumatrapdf/) |
-|Launcher |[TexPortable](setup.md) |
-
-## Where can I get it?
 [Download the latest version of TexPortable][download].
+No prerequisites are required. There is no need to install anything, as all components (*MiKTeX*, *Texmaker* and *SumatraPDF*) are portable versions.
 
-Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **850 MiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which I cannot recommended btw, quite slow performance unfortunately). I recommend using it with a HDD or even better with SSD drives, because of a much faster performance while launching TexPortable and compiling LaTeX documents.
+Furthermore, it is not necessary to bother or care about settings and configuration for DDE commands, inverse search or commandline arguments. TexPortable is already configured to support the features of the editor and the viewer. Just download the package file, extract it and start right away.
+
+Components |Including 
+---|---
+TeX distribution |[MiKTeX](https://miktex.org/) 
+LaTeX editor |[Texmaker](http://www.xm1math.net/texmaker/) 
+PDF viewer |[SumatraPDF](http://blog.kowalczyk.info/software/sumatrapdf/) 
+Launcher |[TexPortable](setup.md) 
+
+Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **850 MiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which is not recommended due to the slow performance). I recommend using it with HDDs (or even better SSDs), because of a much faster performance while launching TexPortable and compiling LaTeX documents.
 
 If you want to dig deeper or would like to know more details about the setup: [here you go](setup.md).
 
@@ -51,25 +52,22 @@ You can browse the [archive](https://drive.google.com/folderview?id=0B_Dtz2OFld1
 ### Integrity
 
 #### Launcher
+
 Hash sums of launcher file `TexPortable.exe` (latest version):
 ```
-MD5: 00451E4FD5DBCF991CCAE01459591B1D
-RIPEMD-160: CFE0F2A8B95C5E7E26EF3366FF162D3C269E1125
-SHA-1: 2E7CC2FDB9D86482CBB0CBC717DB496906FDE88C
 SHA-256: 3D44408ADCB047C2DEB87CF3401B1AF19C9AE4E82A481EBD6238F0E3BF04A9B1
 ```
 Antivirus scan report available at [virustotal][virustotal].
 
 #### Self-Extracting Package
+
 Hash sums of self-extracting package file `YYYY-MM-DD TexPortable.exe` (latest version):
 ```
-MD5: 7F57E492F89F36EAC56CDC8CA82B9598
-RIPEMD-160: 092F459D72A792DD7D5B44929179F8713B4F6706
-SHA-1: 495DD28A9237B88E4919DE04E986B139E57F9194
 SHA-256: 1F9AC4C333FE76B3CE8EEBF117D9888CDB4A417915CDDA882D68D1114FBC8CE7
 ```
 
 ## FAQ (Frequently Asked Questions)
+
 * What kind of drive should I use?  
   From best-case to worst-case: **RAM-Disk > Fast SSD > HDD > Slow SSD > USB flash drive**
   
@@ -84,30 +82,16 @@ SHA-256: 1F9AC4C333FE76B3CE8EEBF117D9888CDB4A417915CDDA882D68D1114FBC8CE7
 * My system refuses to run texmaker.exe, how can I solve this?  
   If you are working with a 32bit system try replacing `Texmaker\texmaker.exe` with a previous version of Texmaker (<= 4.4.1) or stick with the old `2015-02-04 TexPortable` (not recommended though).
 
-## Wishlist
-- [x] if template file exists, load as parameter, otherwise load last/recent document from texmaker
-- [x] check issues with 32bit windows platforms
-- [x] provide a section/page for faq
-- [x] include custom fonts for editor
-- [x] run commands should be based on PID not on ahk_class or (even worse) the title
-- [x] split editor and viewer side by side
-- [x] support TeX Live
-- [ ] making updates easy
-  - check `InverseSearchCmdLine = pass.exe "%f" -line %l` in `SumatraPDF-settings.txt`
-  - check paths for `Tools\...` in `texmaker.ini`
-- [ ] maybe switch to TeX Live for a smaller footprint
-- [ ] provide a parameter for dual monitor setup (TexPortable.exe -dual)
-- [ ] set up a gui for configuration (templates, backup, display-setup, etc.)
+## Authors
 
-## Links
-Looking for alternatives or in search of other LaTeX stuff?
+See the list of [contributors](https://github.com/symera/TexPortable/contributors) who participated in this project.
 
-Here you go:
+## License
 
-* [TeX Live](http://www.tug.org/texlive/) is (similar to MiKTeX) another well-known TeX distribution, but on the plus side a cross-platform one.
-* [TeXnicCenter](http://www.texniccenter.org/), another popular LaTeX Editor for Windows. No portable version though, but there may be a [inofficial workaround](http://www.latex-community.org/know-how/latex-editors/76-latex-editors-texniccenter/354-how-to-make-texniccenter-portable) to make it portable.
+This project is licensed under the GPLv3 License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgements & Credits
+## Acknowledgements
+
 * Donald E. Knuth & Leslie Lamport (TeX & LaTeX)
 * Christian Schenk (MiKTeX)
 * Pascal Brachet (Texmaker)
