@@ -1,4 +1,14 @@
-; TexPortable Launcher v1.6
+; TexPortable 1.6
+; https://symera.de/texportable
+;
+; miktex-portable-2.9.6615.exe
+; sha256 87e7ed8e5a953d050ebe77625c5361627aea7f8a9cfbcea0e279c02929672152
+;
+; SumatraPDF-3.1.2-64.zip
+; sha256 3c07b3fe267251d32a17f67ed5070018d69c8436df33e6db3ce757889b734676
+;
+; texmakerwin64usb.zip (5.0.2)
+; sha256 cdb45fde89e100beabdf42a7ce24c0cadaecba953cfa731350691d70d88b0a02
 
 #NoTrayIcon                                      ; disables the showing of a tray icon
 #SingleInstance force                            ; determines whether a script is allowed to run again when it is already running - FORCE skips the dialog box and replaces the old instance automatically
@@ -6,6 +16,12 @@
 SetTitleMatchMode, 2                             ; a window's title can contain WinTitle anywhere inside it to be a match
 SendMode Input                                   ; recommended for new scripts due to its superior speed and reliability
 SetWorkingDir %A_ScriptDir%                      ; ensures a consistent starting directory
+
+; reset paths and settings in the texmaker.ini
+if 1 = reset
+{
+  Gosub, resetTmIni
+}
 
 ; get monitor work area for splitting windows vertically
 SysGet, workArea, MonitorWorkArea
@@ -20,28 +36,24 @@ if % SubStr(A_OSVersion, 1, 2) = 10
   winHeight += winBorder
 }
 
-; check "bit"ness
-if (A_PtrSize = 8)
-  bitScript = 64
-else ;if (A_PtrSize = 4)
-  bitScript = 32
-if (A_Is64bitOS)
-  bitOS = 64
-else
-  bitOS = 32
+; check support for 64-bit
+if (!A_Is64bitOS)
+{
+  MsgBox Sorry, TexPortable only supports 64-bit platform since version 1.6 and is not compatible with a 32-bit version of Windows.
+}
 
 ; set variables for path and names
 template = %A_WorkingDir%\Documents\Template\Template.tex
 editor = %A_WorkingDir%\Texmaker\texmaker.exe
 editorName = Texmaker
 editorProcess := RegExReplace(editor, "^.*\\(.+$)", "$1")
-viewer = %A_WorkingDir%\SumatraPDF\SumatraPDF%bitOS%.exe
+viewer = %A_WorkingDir%\SumatraPDF\SumatraPDF.exe
 viewerName = SumatraPDF
 viewerProcess := RegExReplace(viewer, "^.*\\(.+$)", "$1")
-texlib = %A_WorkingDir%\MiKTeX\miktex\bin\miktex-taskbar-icon.exe
+texlib = %A_WorkingDir%\MiKTeX\texmfs\install\miktex\bin\miktex-console.exe
 texlibName = MiKTeX
-texlibProcess := RegExReplace(texlib, "^.*\\(.+)\.exe$", "$1.tmp")
-; supporting TeXLive in future
+texlibProcess := RegExReplace(texlib, "^.*\\(.+$)", "$1")
+; upcoming support for TeXLive
 ;texlib = %A_WorkingDir%\TeXLive\tl-tray-menu.exe
 ;texlibName = TeXLive
 ;texlibProcess := RegExReplace(texlib, "^.*\\(.+$)", "$1")
@@ -52,13 +64,20 @@ fontsList := list_files(fontsDir)
 ;if fontsList = 
 ;  MsgBox, No fonts have been found in`n`n%fontsDir%
 
-; check for components
-IfNotExist, %editor%
-  missing(editorName)
-IfNotExist, %viewer%
-  missing(viewerName)
-IfNotExist, %texlib%
-  missing(texlibName)
+; check for components and show message in case components are missing
+components = editor,viewer,texlib
+Loop, parse, components, `,
+{
+  i = %A_LoopField%
+  if !FileExist(%i%)
+  {
+    MsgBox % "Can't find " . %i%Name . "."
+    ExitApp
+  }
+}
+
+; in case texlib is already running
+Gosub, closeTexlib
 
 ; check for texlib process and run only if necessary
 Process, Exist, %texlibProcess%
@@ -70,14 +89,11 @@ if Errorlevel != 0
 }
 else
 {
-  Run, "%texlib%",,,pidtexlib
+  Run, "%texlib%",,hide,pidtexlib
 }
 
 ; add custom fonts for the session from "Fonts"
-RunWait, %A_ScriptDir%\fonts\bin\regfont%bitOS%.exe -a %fontsList%,%fontsDir%,Hide
-
-; adjust path to viewer in editor settings
-IniWrite, "./SumatraPDF/SumatraPDF%bitOS%.exe -reuse-instance `%.pdf -forward-search #.tex @", %A_WorkingDir%\Texmaker\texmaker.ini, texmaker, Tools\Pdf
+RunWait, %A_ScriptDir%\fonts\bin\regfont.exe -a %fontsList%,%fontsDir%,Hide
 
 ; get last (most recent) document from editor settings
 IniRead, lastDoc, %A_WorkingDir%\Texmaker\texmaker.ini, texmaker, Files\Last`%20Document
@@ -85,12 +101,12 @@ StringReplace, lastDoc, lastDoc, \\, \, All
 
 ; if template exists open editor (maximized) with template (Documents\Template\Template.tex)
 ; save pid for later, load last document if no template
-IfExist, %template%
+if FileExist(template)
   Run, "%editor%" "%template%",,Max,pideditor
 else Run, "%editor%" "%lastDoc%",,Max,pideditor
 ; wait for window to pop up and move it to the left half
 ; if last document does not exist, winwait for different title "Texmaker" instead of "Document"
-IfExist, %lastDoc%
+if FileExist(lastDoc)
   WinWaitActive, Document ahk_exe %editorProcess% ahk_pid %pideditor%
 else WinWaitActive, %editorName% ahk_exe %editorProcess% ahk_pid %pideditor%
 if % SubStr(A_OSVersion, 1, 2) = 10
@@ -117,11 +133,12 @@ IfWinActive, ahk_pid %pideditor%
 ; no need for texlib and viewer after editor gets closed
 WinWait, ahk_pid %pideditor%
 WinWaitClose
+end = true
 Gosub, closeTexlib
 Gosub, closeViewer
 
 ; remove custom temporary registered fonts
-RunWait, %A_ScriptDir%\fonts\bin\regfont%bitOS%.exe -r %fontsList%,%fontsDir%,Hide
+RunWait, %A_ScriptDir%\fonts\bin\regfont.exe -r %fontsList%,%fontsDir%,Hide
 
 ; exit texportable launcher
 ExitApp
@@ -139,13 +156,6 @@ list_files(Directory)
 		files = %files% "%A_LoopFileName%"
 	}
 	return files
-}
-
-; show message in case components are missing
-missing(component)
-{
-  MsgBox % "Can't find " . component . "."
-  ExitApp
 }
 
 activateEditor:
@@ -167,9 +177,54 @@ closeTexlib:
   IfWinExist, ahk_pid %pid%
   {
     WinClose
-    ;Process, Close, %texlibProcess% ; only needed for TeX Live (tl-tray-menu.exe)
+    Process, Close, %texlibProcess%
     ;PostMessage, WM_CLOSE
     ;PostMessage, WM_QUIT
+    if (!end)
+      MsgBox %texlibName% is already running.
   }
-  else MsgBox, Can't find %texlibName%! Maybe you closed it already?
+  else return
+  DetectHiddenWindows, Off
+return
+
+resetTmIni:
+  tmIni = %A_WorkingDir%\Texmaker\texmaker.ini
+  mtBin = ./MiKTeX/texmfs/install/miktex/bin
+
+  ; GUI
+  IniWrite, false,                                                                                  %tmIni%, texmaker, GUI\New`%20Version
+
+  ; Font
+  IniWrite, Source Code Pro,                                                                        %tmIni%, texmaker, Editor\Font`%20Family
+  IniWrite, 9,                                                                                      %tmIni%, texmaker, Editor\Font`%20Size
+
+  ; Show  
+  IniWrite, false,                                                                                  %tmIni%, texmaker, Show\Structureview
+
+  ; Tools
+  IniWrite, "./SumatraPDF/SumatraPDF.exe -reuse-instance `%.pdf -forward-search #.tex @",           %tmIni%, texmaker, Tools\Pdf
+  IniWrite, false,                                                                                  %tmIni%, texmaker, Tools\IntegratedPdfViewer
+
+  IniWrite, "%mtBin%/latex -interaction=nonstopmode `%.tex",                                        %tmIni%, texmaker, Tools\Latex
+  IniWrite, "%mtBin%/yap.exe `%.dvi",                                                               %tmIni%, texmaker, Tools\Dvi
+  IniWrite, "%mtBin%/dvips -Pdownload35 -o `%.ps `%.dvi",                                           %tmIni%, texmaker, Tools\Dvips
+  IniWrite, "%mtBin%/ps2pdf `%.ps",                                                                 %tmIni%, texmaker, Tools\Ps2pdf
+  IniWrite, "%mtBin%/makeindex `%.idx",                                                             %tmIni%, texmaker, Tools\Makeindex
+  IniWrite, "%mtBin%/bibtex `%",                                                                    %tmIni%, texmaker, Tools\Bibtex
+  IniWrite, "%mtBin%/pdflatex -synctex=1 -interaction=nonstopmode `%.tex",                          %tmIni%, texmaker, Tools\Pdflatex
+  IniWrite, "%mtBin%/xelatex -synctex=1 -interaction=nonstopmode `%.tex",                           %tmIni%, texmaker, Tools\Xelatex
+  IniWrite, "%mtBin%/lualatex -interaction=nonstopmode `%.tex",                                     %tmIni%, texmaker, Tools\Lualatex
+  IniWrite, "./SumatraPDF/SumatraPDF.exe -reuse-instance `%.pdf -forward-search #.tex @",           %tmIni%, texmaker, Tools\Pdf
+  IniWrite, "%mtBin%/dvipdfm `%.dvi",                                                               %tmIni%, texmaker, Tools\Dvipdf
+  IniWrite, "%mtBin%/mpost --interaction nonstopmode",                                              %tmIni%, texmaker, Tools\Metapost
+  IniWrite, "latexmk -e \"$pdflatex=q/pdflatex -synctex=1 -interaction=nonstopmode/\" -pdf `%.tex", %tmIni%, texmaker, Tools\Latexmk
+
+  ; Recent Files
+  IniWrite, "",                                                                                     %tmIni%, texmaker, Files\Last`%20Document
+  IniWrite, "",                                                                                     %tmIni%, texmaker, Files\Last`%20Template
+  IniWrite, "",                                                                                     %tmIni%, texmaker, Files\Last`%20Script
+  IniWrite, @Invalid(),                                                                             %tmIni%, texmaker, Files\Recent`%20Files`%20New
+
+  ; Dictionary
+  IniWrite, en_US.dic,                                                                              %tmIni%, texmaker, Spell\Dic  
 return
