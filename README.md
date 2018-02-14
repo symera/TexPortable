@@ -1,5 +1,5 @@
-[virustotal]: https://virustotal.com/en/file/3d44408adcb047c2deb87cf3401b1af19c9ae4e82a481ebd6238f0e3bf04a9b1/analysis/1485379734/
-[download]: https://drive.google.com/a/symera.de/uc?id=0B_Dtz2OFld1iR1pHX3ZpWTR4YVk&export=download
+[virustotal]: https://www.virustotal.com/#/file/9680a9f32326be3d22af888201b839414e2b7492cba3320d5492db62bd7add02/detection
+[download]: https://drive.google.com/uc?id=1rkoAigL-iAPOVdU62Yb8jFJLDuYwSJaL&export=download
 [contact me]: mailto:info@symera.de?subject=TexPortable
 
 [logo]: img/logo.png
@@ -30,7 +30,7 @@ LaTeX editor |[Texmaker](http://www.xm1math.net/texmaker/)
 PDF viewer |[SumatraPDF](http://blog.kowalczyk.info/software/sumatrapdf/) 
 Launcher |[TexPortable](setup.md) 
 
-Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **850 MiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which is not recommended due to the slow performance). I recommend using it with HDDs (or even better SSDs), because of a much faster performance while launching TexPortable and compiling LaTeX documents.
+Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **1 GiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which is not recommended due to the slow performance). I recommend using it with HDDs (or even better SSDs), because of a much faster performance while launching TexPortable and compiling LaTeX documents.
 
 If you want to dig deeper or would like to know more details about the setup: [here you go](setup.md).
 
@@ -39,7 +39,8 @@ Feel free to [contact me] if you have any further questions, feedback, or maybe 
 ### Version History
 Release    | MiKTeX   | Texmaker | SumatraPDF | TexPortable
 ---        | ---      | ---   | ---     | ---
-**2017-01-25** | **2.9.6221** |	**4.5** 	| **3.1.2** 	| **1.5**
+**2018-02-14** | **2.9.6615** |	**5.0.2** 	| **3.1.2** 	| **1.6**
+2017-01-25 | 2.9.6221 |	4.5 	| 3.1.2 	| 1.5
 2016-03-28 | 2.9.5857 |	4.5 	| 3.1.1 	| 1.4
 2016-02-12 | 2.9.5857 |	4.5 	| 3.1.1 	| 1.3
 2015-02-04 | 2.9.5105 |	4.4.1 | 3.0     | 1.2
@@ -51,20 +52,19 @@ You can browse the [archive](https://drive.google.com/folderview?id=0B_Dtz2OFld1
 
 ### Integrity
 
+#### Self-Extracting Package
+
+Hash sums of self-extracting package file `2018-02-14 TexPortable.exe` (latest version):
+```
+SHA-256: dd4a99242d18f4671a61d5f3603866bc73588ac59d6c5e9b278fa6b9c45f38fd
+```
 #### Launcher
 
 Hash sums of launcher file `TexPortable.exe` (latest version):
 ```
-SHA-256: 3D44408ADCB047C2DEB87CF3401B1AF19C9AE4E82A481EBD6238F0E3BF04A9B1
+SHA-256: 9680a9f32326be3d22af888201b839414e2b7492cba3320d5492db62bd7add02
 ```
 Antivirus scan report available at [virustotal][virustotal].
-
-#### Self-Extracting Package
-
-Hash sums of self-extracting package file `YYYY-MM-DD TexPortable.exe` (latest version):
-```
-SHA-256: 1F9AC4C333FE76B3CE8EEBF117D9888CDB4A417915CDDA882D68D1114FBC8CE7
-```
 
 ## FAQ (Frequently Asked Questions)
 
