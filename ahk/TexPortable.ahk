@@ -19,9 +19,7 @@ SetWorkingDir %A_ScriptDir%                      ; ensures a consistent starting
 
 ; reset paths and settings in the texmaker.ini
 if 1 = reset
-{
   Gosub, resetTmIni
-}
 
 ; get monitor work area for splitting windows vertically
 SysGet, workArea, MonitorWorkArea
@@ -226,5 +224,8 @@ resetTmIni:
   IniWrite, @Invalid(),                                                                             %tmIni%, texmaker, Files\Recent`%20Files`%20New
 
   ; Dictionary
-  IniWrite, en_US.dic,                                                                              %tmIni%, texmaker, Spell\Dic  
+  IniWrite, en_US.dic,                                                                              %tmIni%, texmaker, Spell\Dic
+  
+  MsgBox Reset completed.
+  ExitApp
 return
