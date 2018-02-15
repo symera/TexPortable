@@ -12,7 +12,7 @@
 
 TexPortable is a convenient combination of free, portable Windows-based software that allows you to write LaTeX documents without having to worry about installation and setup.
 
-Compiling [Editor -> Viewer]: [![img_t_compile]][img_compile] | Inverse Search [Viewer -> Editor]: [![img_t_inverse]][img_inverse]
+Compiling [Editor &rarr; Viewer]: [![img_t_compile]][img_compile] | Inverse Search [Editor &larr; Viewer]: [![img_t_inverse]][img_inverse]
 ------------ | -------------
 Pressing `F1` compiles the current text section and highlights it blue in the viewer | A double-click in the viewer highlights the current text section highlighted in red in the editor
 
@@ -25,15 +25,19 @@ PDF viewer |[SumatraPDF](http://blog.kowalczyk.info/software/sumatrapdf/)
 ## Getting Started
 
 [Download the latest version of TexPortable][download].  
-No prerequisites are required. There is no need to install anything, as all components (*MiKTeX*, *Texmaker* and *SumatraPDF*) are portable versions.
+No prerequisites are required, suitable for 64-bit Windows systems.  
+There is no need to install anything, as all components (*MiKTeX*, *Texmaker* and *SumatraPDF*) are portable versions.
 
-Furthermore, it is not necessary to bother or care about settings and configuration for DDE commands, inverse search or commandline arguments. TexPortable is already configured to support the features of the editor and the viewer. Just download the package file, extract it and start right away.
+It is not necessary to set up the configuration for DDE commands, inverse search or command line arguments.  
+TexPortable is already designed to support the features of both editor and viewer.  
+Just download the package, extract it and get started.
 
-Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **1 GiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which is not recommended due to the slow performance). I recommend using it with HDDs (or even better SSDs), because of a much faster performance while launching TexPortable and compiling LaTeX documents.
+TexPortable takes up approximately 1GiB of memory.  
+USB drives are not recommended due to the poor performance (and therefore very slow compilation time). HDDs (or better SSDs if possible) are recommended.
 
-If you want to dig deeper or would like to know more details about the setup: [here you go](setup.md).
+Click ]here](setup.md) if you want to know more about the setup of TexPortable.
 
-Feel free to [contact me] if you have any further questions, feedback, or maybe suggestions for improvements.
+Feel free to [contact me] if you have any further questions, feedback or suggestions for improvements.
 
 ### Version History
 Release Date | TexPortable | MiKTeX | Texmaker | SumatraPDF
@@ -47,7 +51,7 @@ Release Date | TexPortable | MiKTeX | Texmaker | SumatraPDF
 2014-05-20 | 1.1 | 2.9.5105 | 4.2   | 2.5.2
 2014-01-30 | 1.0 | 2.9.5105 | 4.1.1 | 2.4
 
-You can browse the [archive](https://drive.google.com/folderview?id=0B_Dtz2OFld1iemw2VmhwYUIweUE&usp=sharing#list) if you are looking for a previous release.
+Click [here](https://drive.google.com/folderview?id=0B_Dtz2OFld1iemw2VmhwYUIweUE&usp=sharing#list) if you want to download a previous version of TexPortable.
 
 ### Integrity
 
@@ -75,10 +79,10 @@ Antivirus scan report available at [virustotal][virustotal].
   The template (`Documents/Template/Template.tex`) can be adapted to your needs if required.  
   The template folder can be deleted or renamed if you want to open the last opened document when starting TexPortable.
   
-* Why will TexPortable.exe be recognized as an infected file and what can I do about this?  
-  The executable file `TexPortable.exe` is based on a script written and compiled with AutoHotkey. Some Antivirus applications don't trust AutoHotkey scripts in general. Here are two ways to make sure it's not harmful:  
-  * the easiest way is to compare the hash value of the file and look it up on (or compare it to) sites like [virustotal]. You can calculate the hash (with [Multihasher](http://www.abelhadigital.com/multihasher) for example) or even [upload](https://www.virustotal.com/) the file yourself.
-  * the "hard" way: I've published a [page](setup.md) with further explanations regarding the script. This way you can compile the source code by yourself. It's public and available [here](ahk/TexPortable.ahk). You need [AutoHotkey](http://www.autohotkey.com/) in order to compile the source code.
+* Why is `TexPortable.exe` detected as infected and what can I do about it?  
+  The executable file `TexPortable.exe` is based on a script written with AutoHotkey. Some antivirus programs don't trust AutoHotkey scripts in general. There are two ways to ensure that the file is not harmful:  
+  * the easy way is to compare the hash values. See [virustotal] for the analysis of the TexPortable Launcher.
+  * the "difficult" way would be to compile the [source code](ahk/TexPortable.ahk) yourself using [AutoHotkey](http://www.autohotkey.com/).
   
 * My system refuses to run texmaker.exe, how can I solve this?  
   If you are using a 32-bit Windows, you can replace Texmaker with a previous version (<= 4.4.1) or use the obsolete TexPortable 1.2 (2015-02-04) (which is not recommended).
