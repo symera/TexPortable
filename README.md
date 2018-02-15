@@ -37,16 +37,16 @@ If you want to dig deeper or would like to know more details about the setup: [h
 Feel free to [contact me] if you have any further questions, feedback, or maybe suggestions for improvements.
 
 ### Version History
-Release    | MiKTeX   | Texmaker | SumatraPDF | TexPortable
+Release Date | TexPortable | MiKTeX | Texmaker | SumatraPDF
 ---        | ---      | ---   | ---     | ---
-**2018-02-14** | **2.9.6615** |	**5.0.2** 	| **3.1.2** 	| **1.6**
-2017-01-25 | 2.9.6221 |	4.5 	| 3.1.2 	| 1.5
-2016-03-28 | 2.9.5857 |	4.5 	| 3.1.1 	| 1.4
-2016-02-12 | 2.9.5857 |	4.5 	| 3.1.1 	| 1.3
-2015-02-04 | 2.9.5105 |	4.4.1 | 3.0     | 1.2
-2014-08-17 | 2.9.5105 |	4.3 	| 2.5.2 	| 1.2
-2014-05-20 | 2.9.5105 |	4.2 	| 2.5.2 	| 1.1
-2014-01-30 | 2.9.5105 |	4.1.1 | 2.4 	  | 1.0
+**2018-02-14** | **1.6** | **2.9.6615** | **5.0.2** | **3.1.2**
+2017-01-25 | 1.5 | 2.9.6221 | 4.5   | 3.1.2
+2016-03-28 | 1.4 | 2.9.5857 | 4.5   | 3.1.1
+2016-02-12 | 1.3 | 2.9.5857 | 4.5 	| 3.1.1
+2015-02-04 | 1.2 | 2.9.5105 | 4.4.1 | 3.0
+2014-08-17 | 1.1 | 2.9.5105 | 4.3   | 2.5.2
+2014-05-20 | 1.1 | 2.9.5105 | 4.2   | 2.5.2
+2014-01-30 | 1.0 | 2.9.5105 | 4.1.1 | 2.4
 
 You can browse the [archive](https://drive.google.com/folderview?id=0B_Dtz2OFld1iemw2VmhwYUIweUE&usp=sharing#list) if you are looking for a previous release.
 
@@ -68,11 +68,13 @@ Antivirus scan report available at [virustotal][virustotal].
 
 ## FAQ (Frequently Asked Questions)
 
-* What kind of drive should I use?  
-  From best-case to worst-case: **RAM-Disk > Fast SSD > HDD > Slow SSD > USB flash drive**
-  
-* Is it possible to edit the template or even better select my own project.tex to load right away?  
-  I suggest you edit the template (`Documents/Template/Template.tex`) to fit your purpose if needed. In case you don't want any template to load at startup, just rename or delete the template-folder and TexPortable is always going to start Texmaker with the last (most recent) document.
+* Which drives are suitable for TexPortable (in terms of compilation speed)?
+  SSDs are the fastest and HDDs are slightly slower. For simple documents, compiling takes only a few seconds.  
+  USB sticks, on the other hand, are very slow and can take over a minute (in unfavourable cases).
+
+* Is it possible to edit the template or load my own *xyz.tex* when starting TexPortable?
+  The template (`Documents/Template/Template.tex`) can be adapted to your needs if required.  
+  The template folder can be deleted or renamed if you want to open the last opened document when starting TexPortable.
   
 * Why will TexPortable.exe be recognized as an infected file and what can I do about this?  
   The executable file `TexPortable.exe` is based on a script written and compiled with AutoHotkey. Some Antivirus applications don't trust AutoHotkey scripts in general. Here are two ways to make sure it's not harmful:  
