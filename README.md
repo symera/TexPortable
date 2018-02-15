@@ -32,7 +32,7 @@ It is not necessary to set up the configuration for DDE commands, inverse search
 TexPortable is already designed to support the features of both editor and viewer.  
 Just download the package, extract it and get started.
 
-TexPortable takes up approximately 1GiB of memory.  
+TexPortable takes up approximately 1GiB of storage space.  
 USB drives are not recommended due to the poor performance (and therefore very slow compilation time). HDDs (or better SSDs if possible) are recommended.
 
 Click [here](setup.md) if you want to know more about the setup of TexPortable.
