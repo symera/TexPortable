@@ -35,7 +35,7 @@ Just download the package, extract it and get started.
 TexPortable takes up approximately 1GiB of memory.  
 USB drives are not recommended due to the poor performance (and therefore very slow compilation time). HDDs (or better SSDs if possible) are recommended.
 
-Click ]here](setup.md) if you want to know more about the setup of TexPortable.
+Click [here](setup.md) if you want to know more about the setup of TexPortable.
 
 Feel free to [contact me] if you have any further questions, feedback or suggestions for improvements.
 
