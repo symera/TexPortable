@@ -14,7 +14,7 @@ TexPortable is a convenient combination of free, portable Windows-based software
 
 Compiling [Editor -> Viewer]: [![img_t_compile]][img_compile] | Inverse Search [Viewer -> Editor]: [![img_t_inverse]][img_inverse]
 ------------ | -------------
-Pressing `F1` will highlight current text segment in viewer (after compiling) | A double-click in the viewer highlights the current text passage in the editor
+Pressing `F1` compiles the current text section and highlights it blue in the viewer | A double-click in the viewer highlights the current text section highlighted in red in the editor
 
 Components |Including 
 ---|---
