@@ -10,25 +10,24 @@
 
 # TexPortable
 
-TexPortable is a convenient collection of free software in one portable package for typing LaTeX documents right from scratch. It is made for Windows operating systems.
+TexPortable is a convenient combination of free, portable Windows-based software that allows you to write LaTeX documents without having to worry about installation and setup.
 
 Compiling [Editor -> Viewer]: [![img_t_compile]][img_compile] | Inverse Search [Viewer -> Editor]: [![img_t_inverse]][img_inverse]
 ------------ | -------------
-Pressing `F1` will highlight current text segment in viewer (after compiling) | Double-click in viewer will highlight specific text segment in editor
-
-## Getting Started
-
-[Download the latest version of TexPortable][download].
-No prerequisites are required. There is no need to install anything, as all components (*MiKTeX*, *Texmaker* and *SumatraPDF*) are portable versions.
-
-Furthermore, it is not necessary to bother or care about settings and configuration for DDE commands, inverse search or commandline arguments. TexPortable is already configured to support the features of the editor and the viewer. Just download the package file, extract it and start right away.
+Pressing `F1` will highlight current text segment in viewer (after compiling) | A double-click in the viewer highlights the current text passage in the editor
 
 Components |Including 
 ---|---
 TeX distribution |[MiKTeX](https://miktex.org/) 
 LaTeX editor |[Texmaker](http://www.xm1math.net/texmaker/) 
 PDF viewer |[SumatraPDF](http://blog.kowalczyk.info/software/sumatrapdf/) 
-Launcher |[TexPortable](setup.md) 
+
+## Getting Started
+
+[Download the latest version of TexPortable][download].  
+No prerequisites are required. There is no need to install anything, as all components (*MiKTeX*, *Texmaker* and *SumatraPDF*) are portable versions.
+
+Furthermore, it is not necessary to bother or care about settings and configuration for DDE commands, inverse search or commandline arguments. TexPortable is already configured to support the features of the editor and the viewer. Just download the package file, extract it and start right away.
 
 Double-click on the compressed self-extracting file and select a folder in order to extract it. The extracted files will probably take about **1 GiB** of space. Please have this in mind if you are going to use it on a USB flash-drive (which is not recommended due to the slow performance). I recommend using it with HDDs (or even better SSDs), because of a much faster performance while launching TexPortable and compiling LaTeX documents.
 
@@ -68,11 +67,11 @@ Antivirus scan report available at [virustotal][virustotal].
 
 ## FAQ (Frequently Asked Questions)
 
-* Which drives are suitable for TexPortable (in terms of compilation speed)?
+* Which drives are suitable for TexPortable (in terms of compilation speed)?  
   SSDs are the fastest and HDDs are slightly slower. For simple documents, compiling takes only a few seconds.  
   USB sticks, on the other hand, are very slow and can take over a minute (in unfavourable cases).
 
-* Is it possible to edit the template or load my own *xyz.tex* when starting TexPortable?
+* Is it possible to edit the template or load my own *xyz.tex* when starting TexPortable?  
   The template (`Documents/Template/Template.tex`) can be adapted to your needs if required.  
   The template folder can be deleted or renamed if you want to open the last opened document when starting TexPortable.
   
@@ -82,7 +81,7 @@ Antivirus scan report available at [virustotal][virustotal].
   * the "hard" way: I've published a [page](setup.md) with further explanations regarding the script. This way you can compile the source code by yourself. It's public and available [here](ahk/TexPortable.ahk). You need [AutoHotkey](http://www.autohotkey.com/) in order to compile the source code.
   
 * My system refuses to run texmaker.exe, how can I solve this?  
-  If you are working with a 32bit system try replacing `Texmaker\texmaker.exe` with a previous version of Texmaker (<= 4.4.1) or stick with the old `2015-02-04 TexPortable` (not recommended though).
+  If you are using a 32-bit Windows, you can replace Texmaker with a previous version (<= 4.4.1) or use the obsolete TexPortable 1.2 (2015-02-04) (which is not recommended).
 
 ## Authors
 
@@ -90,7 +89,7 @@ See the list of [contributors](https://github.com/symera/TexPortable/contributor
 
 ## License
 
-This project is licensed under the GPLv3 License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GPLv3 License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgements
 
