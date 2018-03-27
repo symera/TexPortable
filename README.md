@@ -93,7 +93,7 @@ See the list of [contributors](https://github.com/symera/TexPortable/contributor
 
 ## License
 
-This project is licensed under the GPLv3 License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the GPLv2 License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgements
 
