@@ -224,7 +224,7 @@ resetTmIni:
   IniWrite, @Invalid(),                                                                             %tmIni%, texmaker, Files\Recent`%20Files`%20New
 
   ; Dictionary
-  IniWrite, en_US.dic,                                                                              %tmIni%, texmaker, Spell\Dic
+  IniWrite, "./Texmaker/en_US.dic",                                                                 %tmIni%, texmaker, Spell\Dic
   
   MsgBox Reset completed.
   ExitApp
