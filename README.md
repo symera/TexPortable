@@ -1,5 +1,5 @@
 [virustotal]: https://www.virustotal.com/#/file/9680a9f32326be3d22af888201b839414e2b7492cba3320d5492db62bd7add02/detection
-[download]: https://drive.google.com/uc?id=1rkoAigL-iAPOVdU62Yb8jFJLDuYwSJaL&export=download
+[download]: https://github.com/symera/TexPortable/releases/download/v1.6/2018-02-14.TexPortable.exe
 [contact me]: mailto:info@symera.de?subject=TexPortable
 
 [logo]: img/logo.png
@@ -51,7 +51,7 @@ Release Date | TexPortable | MiKTeX | Texmaker | SumatraPDF
 2014-05-20 | 1.1 | 2.9.5105 | 4.2   | 2.5.2
 2014-01-30 | 1.0 | 2.9.5105 | 4.1.1 | 2.4
 
-Click [here](https://drive.google.com/folderview?id=0B_Dtz2OFld1iemw2VmhwYUIweUE&usp=sharing#list) if you want to download a previous version of TexPortable.
+Click [here](https://github.com/symera/TexPortable/tags) if you want to download a previous version of TexPortable.
 
 ### Integrity
 
